@@ -1,4 +1,5 @@
-import makeRequest from '.'
+import makeRequest from "./index";
+
 
 export function getAllData() {
     const url = 'https://api.github.com/users/defunkt/repos';
