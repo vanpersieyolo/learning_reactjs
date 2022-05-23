@@ -1,4 +1,4 @@
-import makeRequest from "./index";
+import makeRequest from "./Index";
 
 
 export function getAllData() {

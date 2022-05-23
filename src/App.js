@@ -7,13 +7,17 @@ function App() {
 
     const [item, setItem] = useState([])
 
-    useEffect(() => {
+    const fetchAllData = () => {
         getAllData().then((res) => {
             setItem(res.data)
         }).catch((error) => {
             console.log(`error`, error);
         })
-    })
+    }
+
+    useEffect(() => {
+        fetchAllData()
+    }, [])
 
     return (
         <div>

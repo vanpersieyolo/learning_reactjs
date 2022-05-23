@@ -12,6 +12,11 @@ import {Button} from "@mui/material";
 
 
 const ListingData = (props) => {
+    const colors = ["red", "blue"];
+    const getColor = (param) => {
+        return param ? colors[0] : colors[1]
+    };
+
     const StyledTableCell = styled(TableCell)(({theme}) => ({
         [`&.${tableCellClasses.head}`]: {
             backgroundColor: theme.palette.common.black,
@@ -34,7 +39,9 @@ const ListingData = (props) => {
 
     return (
         <div>
-            <h1>Mock project</h1>
+            <div className={'subject'}>
+                <h1>Mock project</h1>
+            </div>
             <div>
                 <TableContainer>
                     <Table sx={{minWidth: 700}} aria-label="customized table">
@@ -46,7 +53,7 @@ const ListingData = (props) => {
                                 <StyledTableCell align="right">watchers Count</StyledTableCell>
                                 <StyledTableCell align="right">Language</StyledTableCell>
                                 <StyledTableCell align="right">Open Issues</StyledTableCell>
-                                <StyledTableCell align="right">Status</StyledTableCell>
+                                <StyledTableCell align="right">Private</StyledTableCell>
                                 <StyledTableCell align="center">Action</StyledTableCell>
                             </TableRow>
                         </TableHead>
@@ -61,7 +68,10 @@ const ListingData = (props) => {
                                     <StyledTableCell align="right">{row.watchers_count}</StyledTableCell>
                                     <StyledTableCell align="right">{row.language}</StyledTableCell>
                                     <StyledTableCell align="right">{row.open_issues_count}</StyledTableCell>
-                                    <StyledTableCell align="right">{row.private.toString()}</StyledTableCell>
+
+                                    <StyledTableCell align="right">
+                                        <b style={{color: getColor(row.private)}}>{row.private.toString()}</b>
+                                    </StyledTableCell>
                                     <StyledTableCell>
                                         <div className={'actionBT'}>
                                             <div>

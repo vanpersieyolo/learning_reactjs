@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export default function makeRequest(request) {
 
-    const listMessageError = [{msgCode: '000002', message: 'Request invalid'}];
     return new Promise((resolve, reject) => {
         const {url, method, data, headers, responseType} = request;
         if (!url || url === ``) {
@@ -31,7 +30,7 @@ export default function makeRequest(request) {
                     response?.status === 200 || response?.status === 201 || response?.status === 204 ? resolve(response) : reject(response);
                 })
                 .catch((error) => {
-                    const errorObj = listMessageError.find((ele) => ele.msgCode === error?.response?.data?.msgCode);
+                    const errorObj =  error?.response?.data;
                     errorObj ? handleError(errorObj.message) : handleError(error?.response?.data?.rootCause ?? 'Something wrong, please try again !');
                     reject(error);
                 })
