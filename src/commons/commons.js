@@ -1,4 +1,11 @@
 export const AllowedHTTPRequest = ['POST', 'GET', 'PUT', 'DELETE'];
+
+//redux
+export const ADD = 'ADD';
+export const DELETE = 'DELETE';
+export const EDIT = 'EDIT';
+export const FETCH_ALL = 'FETCH_ALL';
+
 let showLoading = 0;
 let hideLoading = 0;
 

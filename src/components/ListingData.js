@@ -39,7 +39,7 @@ const ListingData = (props) => {
     }));
     const navigate = useNavigate();
     const handleSubmit = (e) => {
-        navigate('/detail', { state: { e } })
+        navigate('/detail/' + e, { state: { id: e} })
     };
 
     return (
@@ -80,7 +80,7 @@ const ListingData = (props) => {
                                     <StyledTableCell>
                                         <div className={'actionBT'}>
                                             <div>
-                                                <Button variant="contained" color="success" onClick={() => handleSubmit(row)}>
+                                                <Button variant="contained" color="success" onClick={() => handleSubmit(row.id)}>
                                                     Detail
                                                 </Button>
                                             </div>

@@ -29,7 +29,7 @@ function App() {
             <div>
                 <Routes>
                     <Route exact path="/" element={<ListingData data={item}/>}/>
-                    <Route path="/detail" element={<DetailData/>}/>
+                    <Route path="/detail/:id" element={<DetailData/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
