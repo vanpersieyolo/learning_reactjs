@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
+
 import './ListingData.css'
 
 import {styled} from '@mui/material/styles';
@@ -9,7 +11,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import {Button} from "@mui/material";
-
 
 const ListingData = (props) => {
     const colors = ["red", "blue"];
@@ -36,6 +37,10 @@ const ListingData = (props) => {
             border: 0,
         },
     }));
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+        navigate('/detail', { state: { e } })
+    };
 
     return (
         <div>
@@ -75,7 +80,7 @@ const ListingData = (props) => {
                                     <StyledTableCell>
                                         <div className={'actionBT'}>
                                             <div>
-                                                <Button variant="contained" color="success">
+                                                <Button variant="contained" color="success" onClick={() => handleSubmit(row)}>
                                                     Detail
                                                 </Button>
                                             </div>
