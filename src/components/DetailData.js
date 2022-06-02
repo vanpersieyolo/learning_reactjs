@@ -44,6 +44,13 @@ const DetailData = () => {
             <h1>Detail</h1>
           </div>
           <div>
+            {!data ? (
+              <h1 style={{ color: "red" }}>Data not found</h1>
+            ) : (
+              <div></div>
+            )}
+          </div>
+          <div>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
