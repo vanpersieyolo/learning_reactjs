@@ -1,32 +1,29 @@
-import {ADD, DELETE, EDIT, FETCH_ALL} from "../../commons/commons";
+import {
+  LANGUAGES_FETCHING_REQUEST,
+  LANGUAGES_FETCHING_SUCCESS,
+} from "../../commons/commons";
 
+const initialData = {
+  data: [],
+  loading: false,
+};
 
-const firstDataReducer = (state = [], action) => {
-    switch (action.type) {
-        case ADD: {
-            const newList = [...state.list];
-            newList.push(action.payload);
+const firstDataReducer = (state = initialData, action) => {
+  switch (action.type) {
+    case LANGUAGES_FETCHING_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case LANGUAGES_FETCHING_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+      };
 
-            return {
-                ...state,
-                list: newList,
-            };
-        }
-
-        case EDIT:{
-            return state.map((data) => data.id === action.id
-                ? { ...data, editing: !data.editing }
-                : data);
-        }
-
-        case DELETE: {
-            return state.filter((data) => data.id !== action.id);
-        }
-
-        default:
-            return state;
-    }
-
-}
+    default:
+      return state;
+  }
+};
 
 export default firstDataReducer;

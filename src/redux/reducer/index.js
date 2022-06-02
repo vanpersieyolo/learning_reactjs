@@ -1,9 +1,8 @@
-
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import firstDataReducer from "./firstDataReducer";
 
 const rootReducer = combineReducers({
-    firstData: firstDataReducer
+    languages: firstDataReducer
 });
 
 export default rootReducer;

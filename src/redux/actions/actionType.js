@@ -1,28 +1,13 @@
-import {ADD, DELETE, EDIT, FETCH_ALL} from "../../commons/commons";
+import {
+  LANGUAGES_FETCHING_REQUEST,
+  LANGUAGES_FETCHING_SUCCESS,
+} from "../../commons/commons";
+import { getAllData } from "../../service/DataSerivce.service";
 
-
-export const addPost = (title, content) => ({
-    type: ADD,
-    title,
-    content
-});
-
-export const editPost = (id) => ({
-    type: EDIT,
-    id: id
-});
-
-export const deletePost = (id) => ({
-    type: DELETE,
-    id: id
-});
-
-export const fetchAllDate = () => ({
-    type: FETCH_ALL
-});
-
-export const getById = (id) => ({
-    type: FETCH_ALL,
-    id: id
-
-});
+export const fetchAllData = () => async (dispatch, unknown, action) => {
+  dispatch({
+    type: LANGUAGES_FETCHING_REQUEST,
+  });
+  const fetchAllData = await getAllData();
+  dispatch({ type: LANGUAGES_FETCHING_SUCCESS, payload: fetchAllData.data });
+};
