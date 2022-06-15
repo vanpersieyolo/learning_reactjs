@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,8 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchAllData, fetchById } from "../redux/actions/actionType";
+import { fetchAllLanguage } from "../redux/actions/actionType";
 import { useParams } from "react-router";
 
 const DetailData = () => {
@@ -24,7 +24,7 @@ const DetailData = () => {
   });
   const loading = useSelector((state) => state.languages.loading);
   useEffect(() => {
-    dispatch(fetchAllData(idParam));
+    dispatch(fetchAllLanguage(idParam));
   }, []);
 
   const navigate = useNavigate();

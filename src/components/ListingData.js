@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -11,16 +12,22 @@ import { Button } from "@mui/material";
 
 import "./ListingData.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchAllData } from "../redux/actions/actionType";
+import { fetchAllLanguage, removeLanguage } from "../redux/actions/actionType";
 
 const ListingData = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.languages.data);
   const loading = useSelector((state) => state.languages.loading);
+
   useEffect(() => {
-    dispatch(fetchAllData());
+    dispatch(fetchAllLanguage());
   }, []);
+
+  const handleRemoveLanguage = (e) => {
+    console.log("remove" + e);
+    dispatch(removeLanguage(e));
+  };
+
   const colors = ["red", "blue"];
   const getColor = (param) => {
     return param ? colors[0] : colors[1];
@@ -115,7 +122,11 @@ const ListingData = () => {
                             </Button>
                           </div>
                           <div>
-                            <Button variant="outlined" color="error">
+                            <Button
+                              variant="outlined"
+                              color="error"
+                              onClick={() => handleRemoveLanguage(row.id)}
+                            >
                               Delete
                             </Button>
                           </div>

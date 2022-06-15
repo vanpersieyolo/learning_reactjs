@@ -8,6 +8,7 @@ export const FETCH_ALL = "FETCH_ALL";
 
 export const LANGUAGES_FETCHING_REQUEST = "LANGUAGES_FETCHING_REQUEST";
 export const LANGUAGES_FETCHING_SUCCESS = "LANGUAGES_FETCHING_SUCCESS";
+export const REMOVE_LANGUAGE = "REMOVE_LANGUAGE";
 
 let showLoading = 0;
 let hideLoading = 0;
